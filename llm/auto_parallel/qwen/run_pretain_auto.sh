@@ -20,7 +20,7 @@ unset CUDA_VISIBLE_DEVICES
 export FLAGS_call_stack_level=3
 export FLAGS_use_cuda_managed_memory=true
 
-task_name="llama_auto_dp2mp2pp2"
+task_name="qwen_auto_mp2pp2"
 rm -rf output/$task_name/
 rm -rf "output/$task_name""_log"
 
@@ -36,6 +36,6 @@ export NVIDIA_TF32_OVERRIDE=0
 export FLAGS_enable_pir_in_executor=0
 
 python -u  -m paddle.distributed.launch \
-    --gpus "0,1,2,3,4,5,6,7" \
+    --gpus "0,1,2,3" \
     --log_dir "auto_3d" \
     run_pretrain_auto.py ./pretrain_argument.json
